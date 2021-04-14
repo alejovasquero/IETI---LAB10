@@ -60,7 +60,7 @@ class App extends React.Component {
 
   addTask(task) {
     console.log(JSON.stringify(task))
-    post("api/tasks", task).then(data => {
+    post("api/todo", task).then(data => {
       console.log(data.response)
     });
   }

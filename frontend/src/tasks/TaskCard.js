@@ -12,6 +12,11 @@ const styles = (theme) => ({
 
     root: {
         margin: "auto",
+    },
+
+    image: {
+        padding: theme.spacing(2),
+        maxWidth: "400px"
     }
 });
 
@@ -61,7 +66,7 @@ class TaskCard extends React.Component {
                             {this.props.task.status === "To Do" ? <ErrorIcon /> : this.props.task.status === "Ready" ? <CheckIcon /> : <PlayCircleFilledWhiteIcon />}
                         </Grid>
 
-
+                        <td>{this.props.task.fileUrl ? <img className={classes.image} src={this.props.task.fileUrl} /> : <div>:(</div>}</td>
                     </Grid>
                 </Card>
             </div>

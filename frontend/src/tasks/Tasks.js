@@ -40,7 +40,8 @@ class Tasks extends React.Component {
 
 
     componentDidMount() {
-        get("api/tasks").then(data => {
+        get("api/todo").then(data => {
+            console.log(data)
             this.setState({ tasks: data });
         });
     }

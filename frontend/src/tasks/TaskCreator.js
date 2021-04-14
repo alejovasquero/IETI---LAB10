@@ -4,6 +4,7 @@ import "./Tasks.css"
 import Select from '@material-ui/core/Select';
 import { Link } from 'react-router-dom';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import { post } from '../requests/axiosRequests';
 
 const styles = (theme) => ({
     root: {
@@ -15,24 +16,48 @@ class TaskCreator extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = { file: null }
         this.handleTaskSubmit = this.handleTaskSubmit.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
 
 
     handleTaskSubmit = (event) => {
         event.preventDefault();
-        let newTask = {
-            description: event.target[0].value,
-            responsible: {
-                name: event.target[1].value,
-                email: event.target[2].value
-            },
-            status: event.target[3].value,
-            dueDate: new Date()
 
-        }
-        console.log(JSON.stringify(newTask))
-        this.props.onTaskAddition(newTask);
+        let data = new FormData();
+        data.append('file', this.state.file);
+
+        let that = this;
+
+        post('api/files', data).then((data) => {
+            console.log("file uploaded!", data);
+            let newTask = {
+                description: event.target[0].value,
+                responsible: {
+                    name: event.target[1].value,
+                    email: event.target[2].value
+                },
+                status: event.target[3].value,
+                dueDate: new Date(),
+                fileUrl: data
+            }
+            console.log(JSON.stringify(newTask))
+            that.props.onTaskAddition(newTask);
+
+        }).catch(function (error) {
+            console.log("failed file upload", error);
+        });
+
+
+
+    }
+
+    handleInputChange(e) {
+        this.setState({
+            file: e.target.files[0]
+        });
+        console.log(this.state.file)
     }
 
 
@@ -66,6 +91,8 @@ class TaskCreator extends React.Component {
                         <option value="In Progress">In Progress</option>
                         <option value="Ready">Ready</option>
                     </Select>
+                    <Divider></Divider>
+                    <input type="file" id="file" onChange={this.handleInputChange} />
                     <Divider></Divider>
                     <Button type="submit">Done</Button>
 

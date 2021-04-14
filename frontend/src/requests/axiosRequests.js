@@ -3,21 +3,13 @@ import axios from 'axios';
 var token = localStorage.getItem("token");
 
 var instance = axios.create({
-    baseURL: 'http://localhost:8080/',
-    timeout: 1000,
-    headers: { 'Authorization': 'Bearer ' + token }
+    baseURL: 'http://localhost:8080/'
 });
 
 
-const config = {
-    headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
-    }
-}
 export const get = (path, data, params) => {
     return new Promise((resolve, reject) => {
-        instance.get(path, data, config)
+        instance.get(path, data, params)
             .then(res => {
                 resolve(res.data);
             }).catch(err => {
@@ -28,7 +20,7 @@ export const get = (path, data, params) => {
 
 export const post = (path, data, params) => {
     return new Promise((resolve, reject) => {
-        instance.post(path, data, config)
+        instance.post(path, data, params)
             .then(res => {
                 console.log(res)
                 resolve(res.data);
