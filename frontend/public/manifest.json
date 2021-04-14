@@ -1,0 +1,25 @@
+{
+  "name": "Task Planner",
+  "short_name": "Planner",
+  "theme_color": "#f18888",
+  "background_color": "#a79c9d",
+  "display": "standalone",
+  "start_url": ".",
+  "icons": [
+    {
+      "src": "task.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "task.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "task.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

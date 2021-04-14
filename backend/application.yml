@@ -1,0 +1,4 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://davinchi:${ATLASDBPASS}@cluster0.8odye.mongodb.net/${ATLASDBNAME}?retryWrites=true&w=majority

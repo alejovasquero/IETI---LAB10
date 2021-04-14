@@ -1,0 +1,21 @@
+.userSection {
+    width: 25vw;
+}
+
+.drawerHeader {
+    display: center;
+    align-items: center;
+    padding-right: 10%;
+    justify-content: flex-end;
+}
+
+
+.addIcon {
+    position: absolute;
+    top: 75vh;
+    left: 85%;
+}
+
+.pageContent {
+    position: relative;
+}
