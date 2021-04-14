@@ -73,3 +73,6 @@ local.properties
 .classpath
 
 .project
+
+build/
+gradle/
