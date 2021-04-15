@@ -7,6 +7,8 @@ import CheckIcon from '@material-ui/icons/Check';
 import ErrorIcon from '@material-ui/icons/Error';
 import PlayCircleFilledWhiteIcon from '@material-ui/icons/PlayCircleFilledWhite';
 import moment from 'moment';
+import DescriptionIcon from '@material-ui/icons/Description';
+import { ExternalLink } from 'react-external-link';
 
 const styles = (theme) => ({
 
@@ -66,7 +68,8 @@ class TaskCard extends React.Component {
                             {this.props.task.status === "To Do" ? <ErrorIcon /> : this.props.task.status === "Ready" ? <CheckIcon /> : <PlayCircleFilledWhiteIcon />}
                         </Grid>
 
-                        <td>{this.props.task.fileUrl ? <img className={classes.image} src={this.props.task.fileUrl} /> : <div>:(</div>}</td>
+                        <td>{this.props.task.fileUrl && !this.props.task.fileUrl.endsWith('pdf') ? <img className={classes.image} src={this.props.task.fileUrl} /> :
+                            <ExternalLink href={this.props.task.fileUrl}><DescriptionIcon/></ExternalLink>}</td>
                     </Grid>
                 </Card>
             </div>

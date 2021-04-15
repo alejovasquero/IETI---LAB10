@@ -1,3 +1,8 @@
+# Credentials
+username: david
+password: vasquez
+
+
 # 2.4 MongoDB Files API
 Create Spring Boot API that allows uploading and serving files.
 
